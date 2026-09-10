@@ -139,6 +139,41 @@ code, .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; fo
 .en b{font-style:normal; font-weight:700; color:var(--accent)}
 .tip .en, .warn .en{font-size:13.5px; margin-top:7px}
 thead th .en{font-size:11px}
+
+/* --- TeKaMoLo Annotation --- */
+.tk{padding:1px 5px 2px; border-radius:5px; background:var(--tk-bg);
+  border-bottom:2px solid var(--tk-bd); -webkit-box-decoration-break:clone; box-decoration-break:clone}
+.tk sup{font-size:9px; font-weight:800; letter-spacing:.06em; color:var(--tk-bd);
+  margin-left:4px; text-transform:uppercase; font-style:normal}
+.te{--tk-bg:#e7f0fb; --tk-bd:#2f6fb5}
+.ka{--tk-bg:#fdeaea; --tk-bd:#b83c34}
+.mo{--tk-bg:#fdf3d8; --tk-bd:#9a7a0d}
+.lo{--tk-bg:#e2f2e7; --tk-bd:#2e7d47}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .te{--tk-bg:#17273a; --tk-bd:#7db4e8}
+  :root:not([data-theme="light"]) .ka{--tk-bg:#33201f; --tk-bd:#f0938c}
+  :root:not([data-theme="light"]) .mo{--tk-bg:#2f2814; --tk-bd:#e3c260}
+  :root:not([data-theme="light"]) .lo{--tk-bg:#172c1f; --tk-bd:#7fcd9a}
+}
+:root[data-theme="dark"] .te{--tk-bg:#17273a; --tk-bd:#7db4e8}
+:root[data-theme="dark"] .ka{--tk-bg:#33201f; --tk-bd:#f0938c}
+:root[data-theme="dark"] .mo{--tk-bg:#2f2814; --tk-bd:#e3c260}
+:root[data-theme="dark"] .lo{--tk-bg:#172c1f; --tk-bd:#7fcd9a}
+
+.legend{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px}
+.legend .tk{font-size:13.5px}
+
+.sents{counter-reset:sent; margin-top:6px}
+.sent{counter-increment:sent; position:relative; padding:14px 0 14px 38px; border-top:1px solid var(--line)}
+.sent:first-child{border-top:none; padding-top:4px}
+.sent::before{content:counter(sent); position:absolute; left:0; top:14px; width:24px; height:24px;
+  border-radius:50%; background:var(--code); color:var(--muted); font-size:12px; font-weight:700;
+  display:flex; align-items:center; justify-content:center}
+.sent:first-child::before{top:4px}
+.sent .ds{font-size:16px; line-height:2.1; margin:0}
+.sent .en{margin-top:9px; font-size:13.5px}
+.sent .why{margin-top:7px; font-size:13px; color:var(--muted); border-left:2px solid var(--line-strong); padding-left:9px}
+@media (max-width:620px){ .sent .ds{font-size:15px; line-height:2.3} }
 .tip{margin-top:12px; font-size:14px; background:var(--gold-soft); border-left:3px solid var(--gold);
   padding:9px 13px; border-radius:0 8px 8px 0}
 .warn{margin-top:12px; font-size:14px; background:var(--accent-soft); border-left:3px solid var(--accent);
@@ -1082,17 +1117,8 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 
 <div class="card">
-<h3>Reihenfolge im Mittelfeld — <span class="mono">TeKaMoLo</span></h3>
-<div class="tw">
-<table>
-<thead><tr><th class="k">Te</th><th class="k">Ka</th><th class="k">Mo</th><th class="k">Lo</th></tr></thead>
-<tbody>
-<tr><td>temporal — <em>wann?</em></td><td>kausal — <em>warum?</em></td><td>modal — <em>wie?</em></td><td>lokal — <em>wo/wohin?</em></td></tr>
-<tr><td class="ex">gestern</td><td class="ex">wegen des Wetters</td><td class="ex">mit dem Zug</td><td class="ex">nach München</td></tr>
-</tbody>
-</table>
-</div>
-<p class="ex">Ich bin <em>gestern wegen des Wetters mit dem Zug nach München</em> gefahren.</p>
+<h3>Reihenfolge im Mittelfeld</h3>
+<p>Stehen mehrere Angaben im Mittelfeld, gilt die Reihenfolge <b class="hl">TeKaMoLo</b> — temporal, kausal, modal, lokal. <a href="#tekamolo">Eigenes Kapitel mit Beispielsätzen →</a></p>
 <p><strong>Objekte:</strong></p>
 <ul>
 <li>Zwei Nomen: <b class="hl">Dativ vor Akkusativ</b> — <em>Ich gebe <u class="hl">dem Kind</u> <u class="hl">das Buch</u>.</em></li>
@@ -1100,6 +1126,118 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <li>Gemischt: <b class="hl">Pronomen zuerst</b> — <em>Ich gebe <u class="hl">es</u> dem Kind.</em> · <em>Ich gebe <u class="hl">ihm</u> das Buch.</em></li>
 </ul>
 <p class="tip"><strong>Wohin mit „nicht“?</strong> Ans Satzende, aber <b class="hl">vor</b> dem zweiten Verbteil, vor Adjektiven und vor lokalen Angaben: <em>Ich kenne ihn <u class="hl">nicht</u>.</em> · <em>Ich habe ihn <u class="hl">nicht</u> gesehen.</em> · <em>Das ist <u class="hl">nicht</u> gut.</em> · <em>Ich fahre <u class="hl">nicht</u> nach Berlin.</em></p>
+</div>
+</section>
+
+<section id="tekamolo" data-title="TeKaMoLo" data-group="Sätze">
+<h2>TeKaMoLo <span class="de">die Reihenfolge der Angaben · what goes where in the middle of a sentence</span></h2>
+
+<div class="card">
+<h3>Was die vier Silben bedeuten</h3>
+<p>Wenn im Mittelfeld mehrere Angaben aufeinandertreffen, ist <b class="hl">TeKaMoLo</b> die neutrale Grundreihenfolge.
+<span class="en">When several adverbial phrases pile up in the middle of a German sentence, this is the default order they line up in. It is a memory hook, not a law — but it is right often enough to lean on.</span></p>
+<div class="tw">
+<table>
+<thead><tr><th class="k">Kürzel</th><th>steht für <span class="en">stands for</span></th><th>Frage <span class="en">question</span></th><th>Beispiele <span class="en">examples</span></th></tr></thead>
+<tbody>
+<tr><td class="k"><span class="tk te">Te</span></td><td><b>temporal</b> <span class="en">time — when, how long, how often</span></td><td>wann? wie lange? wie oft? <span class="en">when? how long? how often?</span></td><td class="ex">gestern, um 8 Uhr, seit drei Jahren, jeden Tag <span class="en">yesterday, at 8, for three years, every day</span></td></tr>
+<tr><td class="k"><span class="tk ka">Ka</span></td><td><b>kausal</b> <span class="en">cause — the reason or purpose</span></td><td>warum? wozu? <span class="en">why? what for?</span></td><td class="ex">wegen des Wetters, aus Angst, deshalb <span class="en">because of the weather, out of fear, therefore</span></td></tr>
+<tr><td class="k"><span class="tk mo">Mo</span></td><td><b>modal</b> <span class="en">manner — how, by what means, with whom</span></td><td>wie? womit? mit wem? <span class="en">how? by what means? with whom?</span></td><td class="ex">mit dem Zug, schnell, gern, zu Fuß, allein <span class="en">by train, quickly, gladly, on foot, alone</span></td></tr>
+<tr><td class="k"><span class="tk lo">Lo</span></td><td><b>lokal</b> <span class="en">place — where to, where from, where at</span></td><td>wo? wohin? woher? <span class="en">where? where to? where from?</span></td><td class="ex">nach München, in der Küche, zu Hause <span class="en">to Munich, in the kitchen, at home</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="legend"><span class="tk te">Te — temporal</span><span class="tk ka">Ka — kausal</span><span class="tk mo">Mo — modal</span><span class="tk lo">Lo — lokal</span></div>
+</div>
+
+<div class="card">
+<h3>Warum es sich falsch anfühlt <span class="pill">für Englischsprachige</span></h3>
+<p>Englisch hat auch eine Grundreihenfolge — und sie ist fast das <b class="hl">Spiegelbild</b> der deutschen.
+<span class="en">English has a default order too, and it runs almost exactly backwards: <b>manner → place → time</b>. That is why a correct German sentence can feel inside-out at first. You are not learning an arbitrary rule; you are learning to reverse the one you already have.</span></p>
+<div class="tw">
+<table>
+<thead><tr><th class="k">Sprache</th><th>Reihenfolge <span class="en">order</span></th><th>Beispiel <span class="en">example</span></th></tr></thead>
+<tbody>
+<tr><td class="k">Deutsch</td><td><span class="tk te">Te</span> → <span class="tk ka">Ka</span> → <span class="tk mo">Mo</span> → <span class="tk lo">Lo</span></td><td class="ex">Ich fahre <span class="tk te">morgen</span> <span class="tk mo">mit dem Zug</span> <span class="tk lo">nach Bern</span>.</td></tr>
+<tr><td class="k">Englisch</td><td><span class="tk mo">Mo</span> → <span class="tk lo">Lo</span> → <span class="tk te">Te</span></td><td class="ex">I’m travelling <span class="tk mo">by train</span> <span class="tk lo">to Bern</span> <span class="tk te">tomorrow</span>.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tip"><strong>Kurzfassung:</strong> Zeit zuerst, Ort zuletzt — im Englischen genau umgekehrt.
+<span class="en"><b>Time first, place last.</b> If you remember only one thing, remember that the time expression moves to the front and the destination goes to the end.</span></p>
+</div>
+
+<div class="card">
+<h3>Zehn Sätze, Stück für Stück</h3>
+<p>Jeder Satz ist markiert, übersetzt und — wo es nützlich ist — kommentiert.
+<span class="en">Each sentence is colour-tagged, translated, and annotated where there is something worth noticing. Read the German first and try to name the parts before looking down.</span></p>
+<div class="legend"><span class="tk te">Te</span><span class="tk ka">Ka</span><span class="tk mo">Mo</span><span class="tk lo">Lo</span></div>
+<div class="sents">
+<div class="sent">
+<p class="ds">Ich fahre <span class="tk te">morgen<sup>Te</sup></span> <span class="tk mo">mit dem Bus<sup>Mo</sup></span> <span class="tk lo">zur Arbeit<sup>Lo</sup></span>.</p>
+<p class="en">I’m going to work by bus tomorrow.</p>
+<p class="why en">Only three parts, and already mirrored: German runs <b>Te–Mo–Lo</b>, English <b>Lo–Mo–Te</b>. Same words, opposite order.</p>
+</div>
+<div class="sent">
+<p class="ds">Die Kinder spielen <span class="tk te">nachmittags<sup>Te</sup></span> <span class="tk lo">im Garten<sup>Lo</sup></span>.</p>
+<p class="en">The children play in the garden in the afternoon.</p>
+<p class="why en">When one letter is missing, the others simply close up. There is no gap to fill — the relative order is what matters.</p>
+</div>
+<div class="sent">
+<p class="ds">Er bleibt <span class="tk te">heute<sup>Te</sup></span> <span class="tk ka">wegen einer Erkältung<sup>Ka</sup></span> <span class="tk lo">zu Hause<sup>Lo</sup></span>.</p>
+<p class="en">He’s staying at home today because of a cold.</p>
+</div>
+<div class="sent">
+<p class="ds">Sie geht <span class="tk te">jeden Morgen<sup>Te</sup></span> <span class="tk mo">zu Fuß<sup>Mo</sup></span> <span class="tk lo">ins Büro<sup>Lo</sup></span>.</p>
+<p class="en">She walks to the office every morning.</p>
+<p class="why en"><em>zu Fuß</em> looks like a place but is <b>modal</b> — it answers <em>how?</em>, not <em>where?</em> Compare English “on foot”.</p>
+</div>
+<div class="sent">
+<p class="ds">Wir sind <span class="tk te">gestern<sup>Te</sup></span> <span class="tk ka">wegen des Streiks<sup>Ka</sup></span> <span class="tk mo">mit dem Auto<sup>Mo</sup></span> <span class="tk lo">nach Köln<sup>Lo</sup></span> gefahren.</p>
+<p class="en">Yesterday we drove to Cologne by car because of the strike.</p>
+<p class="why en">All four, in textbook order. Notice how far the English translation scrambles them — the cause moves to the very end.</p>
+</div>
+<div class="sent">
+<p class="ds">Ich habe <span class="tk te">letzte Woche<sup>Te</sup></span> <span class="tk ka">aus Neugier<sup>Ka</sup></span> <span class="tk mo">heimlich<sup>Mo</sup></span> <span class="tk lo">in seinem Tagebuch<sup>Lo</sup></span> gelesen.</p>
+<p class="en">Last week, out of curiosity, I secretly read his diary.</p>
+<p class="why en">Single words count too: <em>heimlich</em> (secretly) is a full modal element, not a stray adverb.</p>
+</div>
+<div class="sent">
+<p class="ds">Wir treffen uns <span class="tk te">nächsten Freitag um acht<sup>Te</sup></span> <span class="tk lo">vor dem Kino<sup>Lo</sup></span>.</p>
+<p class="en">We’re meeting in front of the cinema at eight next Friday.</p>
+<p class="why en">Within <b>Te</b>, the larger unit comes first: day before clock time. English does the reverse here too — “at eight next Friday”.</p>
+</div>
+<div class="sent">
+<p class="ds">Der Zug fährt <span class="tk te">täglich<sup>Te</sup></span> <span class="tk mo">pünktlich<sup>Mo</sup></span> <span class="tk lo">von Gleis 3<sup>Lo</sup></span> ab.</p>
+<p class="en">The train departs from platform 3 on time every day.</p>
+<p class="why en">Separable verb: the prefix <em>ab</em> still goes last, behind the entire TeKaMoLo block.</p>
+</div>
+<div class="sent">
+<p class="ds">Sie ist <span class="tk te">im Sommer<sup>Te</sup></span> <span class="tk ka">aus beruflichen Gründen<sup>Ka</sup></span> <span class="tk mo">allein<sup>Mo</sup></span> <span class="tk lo">nach Hamburg<sup>Lo</sup></span> gezogen.</p>
+<p class="en">In the summer she moved to Hamburg alone for professional reasons.</p>
+</div>
+<div class="sent">
+<p class="ds">Ich fliege <span class="tk te">im Juli<sup>Te</sup></span> <span class="tk te">für zwei Wochen<sup>Te</sup></span> <span class="tk mo">mit meiner Familie<sup>Mo</sup></span> <span class="tk lo">nach Spanien<sup>Lo</sup></span>.</p>
+<p class="en">In July I’m flying to Spain with my family for two weeks.</p>
+<p class="why en">Two temporal elements: the <b>point in time</b> comes before the <b>duration</b> — <em>im Juli</em>, then <em>für zwei Wochen</em>.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Die Einschränkungen <span class="pill">wichtig</span></h3>
+<ul>
+<li><strong>Es gilt nur für das Mittelfeld.</strong> Was auf Position 1 steht, verlässt die Reihenfolge: <em><span class="tk te">Gestern</span> sind wir <span class="tk mo">mit dem Auto</span> <span class="tk lo">nach Köln</span> gefahren.</em>
+<span class="en">Anything you move to the front for emphasis leaves the sequence — the rest keeps its order behind the verb.</span></li>
+<li><strong>Pronomen kommen zuerst</strong>, vor allen Angaben: <em>Ich habe <b class="hl">es ihm</b> gestern gegeben.</em>
+<span class="en">Pronoun objects jump ahead of the whole TeKaMoLo block, right after the verb.</span></li>
+<li><strong>Betonung schlägt die Regel.</strong> Was betont werden soll, darf nach hinten rutschen.
+<span class="en">The order is the neutral default. Native speakers move things around for emphasis, and so may you once the default sounds normal.</span></li>
+<li><strong>Richtungsangaben bleiben hinten.</strong> Ein <em>wohin?</em> gehört eng zum Verb und steht am Ende des Mittelfelds.
+<span class="en">A direction belongs tightly to the verb and stays at the end, even when another place expression appears earlier.</span></li>
+</ul>
+<p class="warn">Behandle TeKaMoLo als <b class="hl">Standard</b>, nicht als Gesetz — es klingt fast immer richtig, aber es ist nicht die einzige mögliche Reihenfolge.
+<span class="en">Treat it as the safe default. It will almost never sound wrong; it is simply not the only thing that sounds right.</span></p>
 </div>
 </section>
 
