@@ -134,6 +134,11 @@ code, .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; fo
   background:var(--code); padding:1px 5px; border-radius:5px}
 .ex{color:var(--muted); font-size:14.5px}
 .ex em{color:var(--ink); font-style:normal; font-weight:600}
+.en{display:block; margin-top:3px; font-size:12.5px; line-height:1.45; font-style:italic;
+  font-weight:400; letter-spacing:0; text-transform:none; color:var(--muted); opacity:.92}
+.en b{font-style:normal; font-weight:700; color:var(--accent)}
+.tip .en, .warn .en{font-size:13.5px; margin-top:7px}
+thead th .en{font-size:11px}
 .tip{margin-top:12px; font-size:14px; background:var(--gold-soft); border-left:3px solid var(--gold);
   padding:9px 13px; border-radius:0 8px 8px 0}
 .warn{margin-top:12px; font-size:14px; background:var(--accent-soft); border-left:3px solid var(--accent);
@@ -1224,55 +1229,65 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 
 <!-- ============ ZAHLEN & ZEIT ============ -->
 <section id="zeit" data-title="Zahlen, Zeit &amp; Datum" data-group="Praxis">
-<h2>Zahlen, Zeit &amp; Datum <span class="de">am, im, um — die kleinen Wörter</span></h2>
+<h2>Zahlen, Zeit &amp; Datum <span class="de">am, im, um — die kleinen Wörter · the little words that decide everything</span></h2>
 
 <div class="card">
 <h3>Zeitangaben — welche Präposition?</h3>
 <div class="tw">
 <table>
-<thead><tr><th class="k">Präposition</th><th>Wofür</th><th>Beispiele</th></tr></thead>
+<thead><tr><th class="k">Präposition</th><th>Wofür <span class="en">what for</span></th><th>Beispiele <span class="en">examples</span></th></tr></thead>
 <tbody>
-<tr><td class="k">um</td><td>Uhrzeit</td><td class="ex">um 8 Uhr, um Mitternacht</td></tr>
-<tr><td class="k">am</td><td>Tage, Tageszeiten, Datum</td><td class="ex">am Montag, am Abend, am 3. Mai</td></tr>
-<tr><td class="k">im</td><td>Monate, Jahreszeiten</td><td class="ex">im Januar, im Sommer</td></tr>
-<tr><td class="k">—</td><td>Jahreszahlen ohne alles</td><td class="ex">Ich bin <em>1995</em> geboren. / <em>im Jahr 1995</em></td></tr>
-<tr><td class="k">seit</td><td>Beginn in der Vergangenheit, dauert an</td><td class="ex">seit drei Jahren, seit gestern</td></tr>
-<tr><td class="k">vor</td><td>abgeschlossen, rückwärts gerechnet</td><td class="ex">vor einer Woche</td></tr>
-<tr><td class="k">in</td><td>Zukunft</td><td class="ex">in zwei Tagen</td></tr>
-<tr><td class="k">für</td><td>geplante Dauer</td><td class="ex">für ein Jahr nach Berlin</td></tr>
-<tr><td class="k">von … bis</td><td>Zeitraum</td><td class="ex">von 9 bis 17 Uhr</td></tr>
+<tr><td class="k">um</td><td>Uhrzeit <span class="en">clock times</span></td><td class="ex">um 8 Uhr, um Mitternacht <span class="en"><b>at</b> 8 o'clock, <b>at</b> midnight</span></td></tr>
+<tr><td class="k">am</td><td>Tage, Tageszeiten, Datum <span class="en">days, parts of the day, dates</span></td><td class="ex">am Montag, am Abend, am 3. Mai <span class="en"><b>on</b> Monday, <b>in</b> the evening, <b>on</b> 3 May</span></td></tr>
+<tr><td class="k">im</td><td>Monate, Jahreszeiten <span class="en">months, seasons</span></td><td class="ex">im Januar, im Sommer <span class="en"><b>in</b> January, <b>in</b> summer</span></td></tr>
+<tr><td class="k">—</td><td>Jahreszahlen ohne alles <span class="en">years take no preposition at all</span></td><td class="ex">Ich bin <em>1995</em> geboren. / <em>im Jahr 1995</em> <span class="en">I was born <b>in</b> 1995 — German uses nothing where English needs “in”</span></td></tr>
+<tr><td class="k">seit</td><td>Beginn in der Vergangenheit, dauert an <span class="en">started in the past, still going now</span></td><td class="ex">seit drei Jahren, seit gestern <span class="en"><b>for</b> three years, <b>since</b> yesterday — one German word, both English ones</span></td></tr>
+<tr><td class="k">vor</td><td>abgeschlossen, rückwärts gerechnet <span class="en">finished, counted backwards from now</span></td><td class="ex">vor einer Woche <span class="en">a week <b>ago</b></span></td></tr>
+<tr><td class="k">in</td><td>Zukunft <span class="en">a point in the future</span></td><td class="ex">in zwei Tagen <span class="en"><b>in</b> two days</span></td></tr>
+<tr><td class="k">für</td><td>geplante Dauer <span class="en">a planned stretch of time</span></td><td class="ex">für ein Jahr nach Berlin <span class="en">to Berlin <b>for</b> a year</span></td></tr>
+<tr><td class="k">von … bis</td><td>Zeitraum <span class="en">a span with both ends named</span></td><td class="ex">von 9 bis 17 Uhr <span class="en"><b>from</b> 9 <b>to</b> 5</span></td></tr>
 </tbody>
 </table>
 </div>
-<p class="warn"><span class="mono">in der Nacht</span> ist die Ausnahme — sonst <span class="mono">am</span>: <em>am Morgen, am Mittag, am Nachmittag, am Abend</em>.</p>
+<p class="warn"><span class="mono">in der Nacht</span> ist die Ausnahme — sonst <span class="mono">am</span>: <em>am Morgen, am Mittag, am Nachmittag, am Abend</em>.
+<span class="en"><b>am</b> does not map onto one English word. <em>am Montag</em> is <b>on</b> Monday, but <em>am Abend</em> is <b>in</b> the evening. Don't look for a rule — learn each pairing as a phrase.</span></p>
+<p class="warn"><strong>Die zwei häufigsten Fehler:</strong> <span class="mono">seit</span> und <span class="mono">vor</span>.
+<span class="en"><em>seit drei Jahren</em> = <b>for</b> three years, never “since three years” — English only allows “since” with a starting point (<em>since 2020</em>), not a length. And <span class="mono">vor</span> in a time phrase means <b>ago</b>, not “before”: <em>vor einer Woche</em> = a week <b>ago</b>.</span></p>
 </div>
 
 <div class="card">
 <h3>Uhrzeit</h3>
 <div class="tw">
 <table>
-<thead><tr><th class="k">Uhr</th><th>umgangssprachlich</th><th>offiziell</th></tr></thead>
+<thead><tr><th class="k">Uhr</th><th>umgangssprachlich <span class="en">everyday speech</span></th><th>offiziell <span class="en">official, 24-hour</span></th></tr></thead>
 <tbody>
-<tr><td class="k">14:00</td><td>zwei</td><td>vierzehn Uhr</td></tr>
-<tr><td class="k">14:15</td><td>Viertel nach zwei</td><td>vierzehn Uhr fünfzehn</td></tr>
-<tr><td class="k">14:30</td><td><b class="hl">halb drei</b> <span class="pill">zur nächsten Stunde!</span></td><td>vierzehn Uhr dreißig</td></tr>
-<tr><td class="k">14:45</td><td>Viertel vor drei</td><td>vierzehn Uhr fünfundvierzig</td></tr>
-<tr><td class="k">14:20</td><td>zwanzig nach zwei / zehn vor halb drei</td><td>vierzehn Uhr zwanzig</td></tr>
+<tr><td class="k">14:00</td><td>zwei <span class="en">two (o'clock)</span></td><td>vierzehn Uhr</td></tr>
+<tr><td class="k">14:15</td><td>Viertel nach zwei <span class="en">quarter <b>past</b> two</span></td><td>vierzehn Uhr fünfzehn</td></tr>
+<tr><td class="k">14:30</td><td><b class="hl">halb drei</b> <span class="pill">zur nächsten Stunde!</span> <span class="en">literally “half three” — but it means <b>2:30</b></span></td><td>vierzehn Uhr dreißig</td></tr>
+<tr><td class="k">14:45</td><td>Viertel vor drei <span class="en">quarter <b>to</b> three</span></td><td>vierzehn Uhr fünfundvierzig</td></tr>
+<tr><td class="k">14:20</td><td>zwanzig nach zwei / zehn vor halb drei <span class="en">twenty past two / “ten before half three”</span></td><td>vierzehn Uhr zwanzig</td></tr>
 </tbody>
 </table>
 </div>
-<p class="tip"><strong>halb drei = 14:30</strong>, nicht 15:30. Deutsch zählt zur <em>kommenden</em> Stunde.</p>
+<p class="warn"><strong>halb drei = 14:30</strong>, nicht 15:30. Deutsch zählt zur <em>kommenden</em> Stunde.
+<span class="en"><b>A false friend, and an expensive one.</b> British English “half three” means <b>3:30</b>; German <em>halb drei</em> means <b>2:30</b>. German counts <em>toward</em> the coming hour — <em>halb drei</em> is “half of the third hour completed”. So subtract one from the number you hear.</span></p>
 </div>
 
 <div class="card">
 <h3>Zahlen &amp; Ordnungszahlen</h3>
 <ul>
-<li>Zweistellig: von hinten gelesen — <span class="mono">21 = <b class="hl">ein</b>und<b class="hl">zwanzig</b></span>, <span class="mono">76 = sechsundsiebzig</span></li>
-<li><span class="mono">1.–19.</span> → <b class="hl">-te</b>: der ers<b class="hl">te</b>, drit<b class="hl">te</b>, sieb<b class="hl">te</b>, ach<b class="hl">te</b> <span class="pill">unregelmäßig: erste, dritte, siebte, achte</span></li>
-<li><span class="mono">ab 20.</span> → <b class="hl">-ste</b>: der zwanzig<b class="hl">ste</b>, hundert<b class="hl">ste</b></li>
-<li>Ordnungszahlen sind Adjektive und werden dekliniert: <em>am zwei<b class="hl">ten</b> Mai</em>, <em>mein ers<b class="hl">ter</b> Tag</em></li>
+<li>Zweistellig: von hinten gelesen — <span class="mono">21 = <b class="hl">ein</b>und<b class="hl">zwanzig</b></span>, <span class="mono">76 = sechsundsiebzig</span>
+<span class="en">Two-digit numbers are said back to front: <em>einundzwanzig</em> is literally <b>“one-and-twenty”</b>, <em>sechsundsiebzig</em> is <b>“six-and-seventy”</b>. The unit comes first, joined by <em>und</em>. English did this too once — “four-and-twenty blackbirds”.</span></li>
+<li><span class="mono">1.–19.</span> → <b class="hl">-te</b>: der ers<b class="hl">te</b>, drit<b class="hl">te</b>, sieb<b class="hl">te</b>, ach<b class="hl">te</b> <span class="pill">unregelmäßig: erste, dritte, siebte, achte</span>
+<span class="en">= <b>first, third, seventh, eighth</b>. These four are irregular in German exactly as they are in English, so the irregularity is already familiar.</span></li>
+<li><span class="mono">ab 20.</span> → <b class="hl">-ste</b>: der zwanzig<b class="hl">ste</b>, hundert<b class="hl">ste</b>
+<span class="en">= <b>twentieth, hundredth</b>. From 20 upwards the ending is always <em>-ste</em>.</span></li>
+<li>Ordnungszahlen sind Adjektive und werden dekliniert: <em>am zwei<b class="hl">ten</b> Mai</em>, <em>mein ers<b class="hl">ter</b> Tag</em>
+<span class="en">Ordinals are adjectives, so they take normal adjective endings: <em>am zweiten Mai</em> = on the second of May, <em>mein erster Tag</em> = my first day.</span></li>
 </ul>
 <p><strong>Datum:</strong> <span class="ex">Heute ist <em>der</em> 3. Mai. (Nominativ) · Ich komme <em>am</em> 3. Mai. (Dativ) · Berlin, <em>den</em> 3. Mai 2026 (Briefkopf)</span></p>
+<p class="tip"><strong>Datum vorlesen.</strong>
+<span class="en">Two things the written form hides. First, the dot after the number is an <b>ordinal marker</b> — it is the German equivalent of the “rd” in 3rd. So <em>3. Mai</em> is spoken <b>am dritten Mai</b>, never “am drei Mai”. Second, German dates run <b>day.month.year</b>: <em>3.5.2026</em> is <b>3 May</b>, not 3 March.</span></p>
 </div>
 </section>
 
