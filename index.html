@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Deutsche Grammatik — Referenz</title>
-<meta name="description" content="Kompakte Referenz der deutschen Grammatik: Kasus, Artikel, Adjektivendungen, Pronomen, Präpositionen, Verben, Zeitformen, Satzbau.">
+<meta name="description" content="Nachschlagewerk der deutschen Grammatik: Kasus, Artikel, Adjektivendungen, Pronomen, Präpositionen, Verben, Zeitformen, Satzbau. Alle Tabellen durchsuchbar.">
 <style>
 :root{
   --bg:#faf8f5; --panel:#ffffff; --ink:#1c1a17; --muted:#6b6459;
@@ -210,45 +207,135 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
   body{background:#fff}
   .card{break-inside:avoid; box-shadow:none}
 }
-</style>
-</head>
-<body>
-<div class="scrim" id="scrim"></div>
 
-<div class="topbar">
-  <button class="iconbtn" id="menuBtn" aria-label="Menü öffnen">☰</button>
-  <strong style="font-size:15px">Deutsche Grammatik</strong>
-  <button class="iconbtn" id="themeBtn2" aria-label="Theme wechseln" style="margin-left:auto">◐</button>
-</div>
 
-<button class="iconbtn theme-fixed" id="themeBtn" aria-label="Theme wechseln" title="Hell / Dunkel">◐</button>
+/* ============ REFERENCE SHELL ============ */
+.wrap,.sidebar,.topbar,.scrim,.theme-fixed{display:none!important}
+body{margin:0}
+.hidden-store{display:none}
+:root{--r:13px;--sh-sm:0 1px 2px rgba(40,30,15,.05);
+  --sh:0 2px 4px rgba(40,30,15,.04),0 8px 24px rgba(40,30,15,.07);
+  --sh-lg:0 10px 20px rgba(40,30,15,.09),0 28px 56px rgba(40,30,15,.12);
+  --blue:#2f6fb5;--green:#2e7d47}
+:root[data-theme="dark"]{--sh-sm:0 1px 2px rgba(0,0,0,.4);
+  --sh:0 2px 4px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  --sh-lg:0 10px 20px rgba(0,0,0,.4),0 28px 56px rgba(0,0,0,.5);
+  --blue:#7db4e8;--green:#7fcd9a}
 
-<div class="wrap">
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <span class="flag" aria-hidden="true"></span>
-    <h1>Deutsche Grammatik<small>Referenz A1–B2</small></h1>
-  </div>
+/* ---- top bar: search is the front door ---- */
+.top{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--panel) 86%,transparent);
+  backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px)}
+.top-in{max-width:1240px;margin:0 auto;padding:9px clamp(14px,3vw,24px);display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;letter-spacing:-.02em;
+  text-decoration:none;color:var(--ink);flex:0 0 auto;background:none;border:none;cursor:pointer;font-family:inherit}
+.flag{width:22px;height:15px;border-radius:3px;background:linear-gradient(#111 33.3%,#c8102e 33.3% 66.6%,#f0c400 66.6%);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.kbd-search{flex:1 1 0;min-width:0;max-width:460px;margin:0 auto;display:flex;align-items:center;gap:9px;padding:8px 13px;
+  font:inherit;font-size:13.5px;border:1px solid var(--line-strong);border-radius:10px;
+  background:var(--bg);color:var(--muted);cursor:pointer;text-align:left}
+.kbd-search:hover{border-color:var(--accent);color:var(--ink)}
+.kbd-search kbd{margin-left:auto;font:600 10.5px ui-monospace,monospace;border:1px solid var(--line-strong);
+  border-radius:4px;padding:2px 5px;background:var(--panel)}
+.tbtn{padding:7px 12px;border-radius:9px;border:1px solid var(--line-strong);background:var(--panel);
+  color:var(--muted);font:500 13px inherit;cursor:pointer;white-space:nowrap}
+.tbtn:hover,.tbtn.on{color:var(--ink);border-color:var(--accent)}
+.ico{width:33px;height:33px;border-radius:9px;border:1px solid var(--line-strong);background:var(--panel);
+  color:var(--muted);display:grid;place-items:center;cursor:pointer;font-size:14px;flex:0 0 auto}
+main{max-width:1240px;margin:0 auto;padding:0 clamp(14px,3vw,24px) 70px}
 
-  <div class="search">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-    <input id="q" type="search" placeholder="Suchen …" autocomplete="off" aria-label="Grammatik durchsuchen">
-    <kbd>/</kbd>
-  </div>
+/* ---- home = dense directory ---- */
+.lede{margin:26px 0 4px;max-width:62ch}
+.lede h1{font-size:26px;letter-spacing:-.028em;margin:0 0 5px;border:none;padding:0;display:block}
+.lede p{margin:0;color:var(--muted);font-size:14.5px}
+.dirgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:13px;margin-top:14px}
+.grouphead{display:flex;align-items:baseline;gap:11px;margin:30px 0 0}
+.grouphead h2{font:800 12px inherit;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  margin:0;border:none;padding:0;display:block}
+.grouphead .ct{font-size:12px;color:var(--muted);opacity:.75}
+.grouphead .ln{flex:1;height:1px;background:var(--line)}
+.tblock{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px 10px;
+  box-shadow:var(--sh-sm);border-top:2px solid var(--ac);transition:box-shadow .16s,border-color .16s}
+.tblock:hover{box-shadow:var(--sh)}
+.tblock > button.th{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;padding:0;
+  cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.tblock .th h3{margin:0;font-size:14.5px;letter-spacing:-.01em}
+.tblock .th .n{margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600}
+.tblock .en{margin:2px 0 0;font-size:12px}
+.tlinks{list-style:none;margin:9px 0 0;padding:7px 0 0;border-top:1px solid var(--line)}
+.tlinks li{margin:0}
+.tlinks button{display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  font:inherit;font-size:13px;color:var(--muted);padding:3px 6px;border-radius:6px;line-height:1.4}
+.tlinks button:hover{background:var(--code);color:var(--accent)}
 
-  <nav class="nav-groups" id="nav"></nav>
-</aside>
+/* ---- topic view ---- */
+.crumb{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);padding:20px 0 0;flex-wrap:wrap}
+.crumb button{background:none;border:none;font:inherit;color:var(--muted);cursor:pointer;padding:0}
+.crumb button:hover{color:var(--accent)}
+.cols{display:flex;gap:30px;align-items:flex-start}
+.colmain{flex:1;min-width:0}
+.thead h1{font-size:29px;letter-spacing:-.03em;margin:5px 0 2px;line-height:1.12;border:none;padding:0;display:block}
+.thead .en{font-size:14px;margin-bottom:2px}
+.tbody{display:block}
+.onthis{position:sticky;top:70px;width:186px;flex:0 0 186px;font-size:12.5px;padding-top:22px}
+.onthis b{display:block;font:800 10.5px inherit;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.onthis button{display:block;width:100%;text-align:left;padding:4px 9px;border:none;border-left:2px solid var(--line);
+  background:none;color:var(--muted);cursor:pointer;font:inherit;line-height:1.35}
+.onthis button.on{border-left-color:var(--accent);color:var(--accent);font-weight:650}
+.pager{display:flex;gap:11px;margin-top:26px;flex-wrap:wrap}
+.pg{flex:1 1 210px;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--r);padding:11px 15px;cursor:pointer;box-shadow:var(--sh-sm);text-align:left;font:inherit;color:var(--ink)}
+.pg:hover{border-color:var(--accent)}
+.pg small{font:700 10.5px inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pg b{font-size:14.5px;letter-spacing:-.015em}
+.pg.nx{text-align:right;align-items:flex-end}
 
-<main class="main" id="main">
+/* NB: .tw uses overflow-x:auto, which makes it a scroll container, so sticky
+   table headers anchor to the wrapper instead of the page. Not used. */
+@keyframes flash{0%,100%{box-shadow:var(--sh)}25%,75%{box-shadow:0 0 0 3px var(--gold),var(--sh)}}
+.card.flash{animation:flash 1.5s ease}
 
-<div class="lede">
-  <p><strong>Eine Seite, alle Tabellen.</strong> Die Kernregeln der deutschen Grammatik zum Nachschlagen — Kasus, Artikel, Adjektivendungen, Pronomen, Präpositionen, Zeitformen, Satzbau.</p>
-  <p>Tippe <kbd class="mono">/</kbd> zum Suchen, oder wähle links ein Thema. Alles auf einer Seite — also funktioniert auch <span class="mono">Strg/⌘ + F</span>.</p>
-</div>
+/* ---- all-tables view ---- */
+.allnote{display:flex;gap:10px;align-items:center;background:var(--gold-soft);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:11px 15px;margin:22px 0 6px;font-size:13.5px}
+.allsec{margin-top:26px}
+.allsec > h2{font-size:19px;letter-spacing:-.02em;margin:0 0 2px;padding-bottom:6px;border-bottom:2px solid var(--line-strong)}
 
-<!-- ============ KASUS ============ -->
-<section id="kasus" data-title="Die vier Fälle" data-group="Grundlagen">
-<h2>Die vier Fälle <span class="de">Kasus — wer macht was mit wem?</span></h2>
+/* ---- palette ---- */
+.pal-wrap{position:fixed;inset:0;z-index:80;display:grid;place-items:start center;padding-top:9vh}
+.pal-wrap[hidden]{display:none}
+.pal-bg{position:absolute;inset:0;background:rgba(20,15,8,.45);backdrop-filter:blur(3px)}
+.pal{position:relative;width:min(94vw,620px);background:var(--panel);border:1px solid var(--line-strong);
+  border-radius:14px;box-shadow:var(--sh-lg);overflow:hidden}
+.pal input{width:100%;padding:15px 18px;font:16px inherit;color:var(--ink);background:none;border:none;
+  border-bottom:1px solid var(--line);outline:none}
+.pal-list{max-height:min(56vh,460px);overflow-y:auto;padding:6px}
+.pal-list .row{display:flex;align-items:flex-start;gap:11px;padding:8px 12px;border-radius:9px;cursor:pointer}
+.pal-list .row.sel{background:var(--accent-soft)}
+.pal-list .row .ic{width:24px;height:24px;border-radius:7px;background:var(--code);display:grid;place-items:center;
+  font-size:12px;flex:0 0 auto;margin-top:1px}
+.pal-list .row .tx{min-width:0;flex:1}
+.pal-list .row .tx b{display:block;font-size:13.5px;font-weight:650}
+.pal-list .row .tx span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pal-list .row mark{background:var(--gold-soft);color:inherit;font-weight:700;border-radius:3px;padding:0 1px}
+.pal-empty{padding:22px;text-align:center;color:var(--muted);font-size:14px}
+.pal-foot{display:flex;gap:15px;padding:8px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+.pal-foot kbd{font:600 10px ui-monospace,monospace;border:1px solid var(--line-strong);border-radius:4px;padding:1px 4px;margin-right:3px}
+
+@media (max-width:900px){.onthis{display:none}}
+@media (max-width:640px){.kbd-search{max-width:none}.tbtn,.logo .lbl{display:none}
+  .kbd-search span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+@media print{.top,.onthis,.crumb,.pager,.allnote{display:none}.card{break-inside:avoid;box-shadow:none}}
+</style></head><body>
+<header class="top"><div class="top-in">
+  <button class="logo" id="homeBtn"><span class="flag"></span><span class="lbl">Deutsche&nbsp;Grammatik</span></button>
+  <button class="kbd-search" id="openK">🔍 <span>Tabellen durchsuchen …</span><kbd>/</kbd></button>
+  <button class="tbtn" id="allBtn">Alle Tabellen</button>
+  <button class="ico" id="theme" title="Hell / Dunkel">◐</button>
+</div></header>
+<main id="app"></main>
+<div class="hidden-store"><div class="tbody" id="t-kasus" hidden>
+
 
 <div class="card">
 <h3>Übersicht</h3>
@@ -282,11 +369,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p>Dativ = Person, Akkusativ = Sache: <span class="chips" style="display:inline-flex;vertical-align:middle"><span>geben</span><span>schenken</span><span>zeigen</span><span>erklären</span><span>schicken</span><span>bringen</span><span>empfehlen</span><span>leihen</span></span></p>
 <p class="ex">Ich schenke <em>meiner Schwester</em> (Dat.) <em>ein Buch</em> (Akk.).</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-artikel" hidden>
 
-<!-- ============ ARTIKEL ============ -->
-<section id="artikel" data-title="Artikel &amp; ein-Wörter" data-group="Grundlagen">
-<h2>Artikel <span class="de">der/die/das · ein/kein/mein</span></h2>
 
 <div class="card">
 <h3>Bestimmter Artikel — <span class="mono">der / die / das</span></h3>
@@ -344,11 +429,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 <p class="ex">Mit <em>diesem</em> Zug · in <em>jedem</em> Fall · <em>Welchen</em> Film? · <em>alle</em> Kinder</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-pronomen" hidden>
 
-<!-- ============ PRONOMEN ============ -->
-<section id="pronomen" data-title="Pronomen" data-group="Grundlagen">
-<h2>Pronomen <span class="de">ich/mich/mir · sich · der, die, das</span></h2>
 
 <div class="card">
 <h3>Personalpronomen</h3>
@@ -410,11 +493,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="tip"><strong>Zwei Regeln:</strong> Das <b class="hl">Genus</b> kommt vom Nomen davor, der <b class="hl">Kasus</b> von der Rolle im Relativsatz. Und das Verb steht am <b class="hl">Ende</b>.</p>
 <p class="ex">Der Mann, <em>der</em> dort steht … (Subjekt) · Der Mann, <em>den</em> ich kenne … (Objekt) · Der Mann, <em>dem</em> ich helfe … (Dativverb) · Die Frau, <em>mit der</em> ich spreche … (Präposition zuerst)</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-adjektive" hidden>
 
-<!-- ============ ADJEKTIVE ============ -->
-<section id="adjektive" data-title="Adjektivendungen" data-group="Grundlagen">
-<h2>Adjektivendungen <span class="de">der schnelle Zug · ein schneller Zug · schneller Zug</span></h2>
 
 <div class="card">
 <h3>Die Grundfrage: Welche Tabelle?</h3>
@@ -516,11 +597,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <li>Vergleich: <em>so groß <b class="hl">wie</b></em> (gleich) · <em>größer <b class="hl">als</b></em> (ungleich)</li>
 </ul>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-nomen" hidden>
 
-<!-- ============ NOMEN ============ -->
-<section id="nomen" data-title="Nomen: Genus &amp; Plural" data-group="Grundlagen">
-<h2>Nomen <span class="de">Genus, Plural, N-Deklination</span></h2>
 
 <div class="card">
 <h3>Genus an der Endung erkennen</h3>
@@ -572,11 +651,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p><strong>Dazu gehören:</strong> maskuline Nomen auf <span class="mono">-e</span> (Junge, Kunde, Kollege, Neffe, Löwe), auf <span class="mono">-ent, -ant, -ist, -oge, -at, -graf, -soph</span> (Student, Praktikant, Journalist, Biologe, Kandidat) und die Einzelgänger <span class="mono">Herr, Mensch, Nachbar, Bauer, Held, Prinz, Hirt</span>.</p>
 <p class="warn"><span class="mono">Herr</span> ist unregelmäßig: Singular <em>Herr<b class="hl">n</b></em>, Plural <em>Herr<b class="hl">en</b></em>. · <span class="mono">Name, Gedanke, Buchstabe, Wille, Friede</span> haben zusätzlich im Genitiv <em>-ns</em>: <em>des Name<b class="hl">ns</b></em>. · <span class="mono">das Herz</span>: <em>dem Herzen, des Herzens</em>.</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-praepositionen" hidden>
 
-<!-- ============ PRÄPOSITIONEN ============ -->
-<section id="praepositionen" data-title="Präpositionen" data-group="Grundlagen">
-<h2>Präpositionen <span class="de">welcher Kasus folgt?</span></h2>
 
 <div class="grid2">
 <div class="card">
@@ -671,11 +748,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </table>
 </div>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-praesens" hidden>
 
-<!-- ============ PRÄSENS ============ -->
-<section id="praesens" data-title="Präsens &amp; Konjugation" data-group="Verben">
-<h2>Präsens <span class="de">die Gegenwart konjugieren</span></h2>
 
 <div class="card">
 <h3>Regelmäßige Endungen</h3>
@@ -737,11 +812,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p>Mit einer Zeitangabe ersetzt das Präsens meistens das Futur:</p>
 <p class="ex">Morgen <em>fahre</em> ich nach Wien. · Nächste Woche <em>beginnt</em> der Kurs.</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-modalverben" hidden>
 
-<!-- ============ MODALVERBEN ============ -->
-<section id="modalverben" data-title="Modalverben" data-group="Verben">
-<h2>Modalverben <span class="de">können, müssen, wollen …</span></h2>
 
 <div class="card">
 <h3>Präsens <span class="pill">ich und er sind gleich!</span></h3>
@@ -796,11 +869,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 <p class="tip">In der Vergangenheit nimmt man bei Modalverben fast immer das <b class="hl">Präteritum</b>, nicht das Perfekt.</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-trennbar" hidden>
 
-<!-- ============ TRENNBARE VERBEN ============ -->
-<section id="trennbar" data-title="Trennbare Verben" data-group="Verben">
-<h2>Trennbare &amp; untrennbare Verben <span class="de">aufstehen → ich stehe auf</span></h2>
 
 <div class="card">
 <h3>Trennbar — Präfix wandert ans Satzende</h3>
@@ -831,11 +902,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p>Ebenso ohne <span class="mono">ge-</span>: alle Verben auf <span class="mono">-ieren</span> → <em>studiert, telefoniert, fotografiert, passiert</em>.</p>
 <p class="warn"><strong>Beides möglich:</strong> <span class="mono">durch-, über-, um-, unter-, wieder-</span>. Wörtlich = trennbar (<em>Er setzt uns über</em> = mit dem Boot), übertragen = untrennbar (<em>Er übersetzt den Text</em>).</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-vergangenheit" hidden>
 
-<!-- ============ VERGANGENHEIT ============ -->
-<section id="vergangenheit" data-title="Vergangenheit" data-group="Verben">
-<h2>Vergangenheit <span class="de">Perfekt · Präteritum · Plusquamperfekt</span></h2>
 
 <div class="card">
 <h3>Welche Zeitform wann?</h3>
@@ -901,11 +970,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 <p class="tip">Futur I bedeutet oft weniger „Zukunft“ als <b class="hl">Vermutung</b>: <em>Er wird wohl krank sein.</em> (= wahrscheinlich ist er krank)</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-unregelmaessig" hidden>
 
-<!-- ============ UNREGELMÄSSIGE VERBEN ============ -->
-<section id="unregelmaessig" data-title="Unregelmäßige Verben" data-group="Verben">
-<h2>Unregelmäßige Verben <span class="de">die Liste, die man wirklich braucht</span></h2>
 <div class="card">
 <h3>Die 50 häufigsten <span class="pill">Infinitiv · er-Form · Präteritum · Partizip II</span></h3>
 <div class="tw">
@@ -967,11 +1034,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 <p class="tip">Muster erkennen spart Arbeit: <span class="mono">ei – ie – ie</span> (bleiben, schreiben, steigen) · <span class="mono">i – a – u</span> (trinken, singen, finden) · <span class="mono">e – a – o</span> (sprechen, helfen, werfen) · <span class="mono">a – u – a</span> (fahren, tragen, waschen).</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-imperativ" hidden>
 
-<!-- ============ IMPERATIV ============ -->
-<section id="imperativ" data-title="Imperativ" data-group="Verben">
-<h2>Imperativ <span class="de">Komm! Kommt! Kommen Sie!</span></h2>
 <div class="card">
 <h3>Die vier Formen</h3>
 <div class="tw">
@@ -988,11 +1053,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="warn"><strong>Der klassische Fehler:</strong> <span class="mono">e → i</span> bleibt im du-Imperativ (<em>Sprich! Nimm! Gib! Lies! Hilf!</em>), aber <span class="mono">a → ä</span> <b class="hl">verschwindet</b> (<em>Fahr! Schlaf! Trag!</em> — nicht „Fähr!“).</p>
 <p class="tip">Höflicher wird es mit <span class="mono">bitte</span>, <span class="mono">doch</span> und <span class="mono">mal</span>: <em>Komm doch mal vorbei!</em> · Verben auf <span class="mono">-t/-d/-ig</span> bekommen ein <span class="mono">-e</span>: <em>Arbeite! Entschuldige!</em></p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-konjunktiv" hidden>
 
-<!-- ============ KONJUNKTIV ============ -->
-<section id="konjunktiv" data-title="Konjunktiv II" data-group="Verben">
-<h2>Konjunktiv II <span class="de">wäre, hätte, würde — höflich &amp; hypothetisch</span></h2>
 
 <div class="card">
 <h3>Wofür man ihn braucht</h3>
@@ -1043,11 +1106,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="ex">Er sagt, er <em>sei</em> krank. · Sie behauptet, sie <em>habe</em> nichts gewusst. · Der Minister erklärte, man <em>könne</em> nichts tun.</p>
 <p class="tip">Wenn die Konjunktiv-I-Form wie das Präsens aussieht (z.&nbsp;B. <em>sie haben</em>), weicht man auf den Konjunktiv II aus: <em>Sie sagen, sie <b class="hl">hätten</b> keine Zeit.</em></p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-passiv" hidden>
 
-<!-- ============ PASSIV ============ -->
-<section id="passiv" data-title="Passiv" data-group="Verben">
-<h2>Passiv <span class="de">werden + Partizip II</span></h2>
 <div class="card">
 <h3>Alle Zeitformen</h3>
 <div class="tw">
@@ -1079,11 +1140,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="tip"><strong>Zustandspassiv</strong> mit <span class="mono">sein</span> beschreibt das Ergebnis, nicht den Vorgang: <em>Das Geschäft <b class="hl">ist</b> geschlossen</em> (Zustand) vs. <em>Das Geschäft <b class="hl">wird</b> geschlossen</em> (gerade jetzt).</p>
 <p><strong>Passiv-Alternativen:</strong> <span class="mono">man</span> (<em>Man baut hier ein Haus</em>) · <span class="mono">sich lassen</span> (<em>Das lässt sich reparieren</em>) · <span class="mono">sein + zu + Infinitiv</span> (<em>Das ist zu erledigen</em>).</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-satzbau" hidden>
 
-<!-- ============ SATZBAU ============ -->
-<section id="satzbau" data-title="Satzbau &amp; Wortstellung" data-group="Sätze">
-<h2>Satzbau <span class="de">wo steht das Verb?</span></h2>
 
 <div class="card">
 <h3>Die drei Grundregeln</h3>
@@ -1127,10 +1186,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </ul>
 <p class="tip"><strong>Wohin mit „nicht“?</strong> Ans Satzende, aber <b class="hl">vor</b> dem zweiten Verbteil, vor Adjektiven und vor lokalen Angaben: <em>Ich kenne ihn <u class="hl">nicht</u>.</em> · <em>Ich habe ihn <u class="hl">nicht</u> gesehen.</em> · <em>Das ist <u class="hl">nicht</u> gut.</em> · <em>Ich fahre <u class="hl">nicht</u> nach Berlin.</em></p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-tekamolo" hidden>
 
-<section id="tekamolo" data-title="TeKaMoLo" data-group="Sätze">
-<h2>TeKaMoLo <span class="de">die Reihenfolge der Angaben · what goes where in the middle of a sentence</span></h2>
 
 <div class="card">
 <h3>Was die vier Silben bedeuten</h3>
@@ -1239,11 +1297,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="warn">Behandle TeKaMoLo als <b class="hl">Standard</b>, nicht als Gesetz — es klingt fast immer richtig, aber es ist nicht die einzige mögliche Reihenfolge.
 <span class="en">Treat it as the safe default. It will almost never sound wrong; it is simply not the only thing that sounds right.</span></p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-konjunktionen" hidden>
 
-<!-- ============ KONJUNKTIONEN ============ -->
-<section id="konjunktionen" data-title="Konjunktionen" data-group="Sätze">
-<h2>Konjunktionen <span class="de">Sätze verbinden — und was mit dem Verb passiert</span></h2>
 
 <div class="card">
 <h3>1 · Nebenordnend — Wortstellung bleibt gleich <span class="pill">Position 0</span></h3>
@@ -1310,11 +1366,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </table>
 </div>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-verbpraeposition" hidden>
 
-<!-- ============ VERBEN MIT PRÄPOSITION ============ -->
-<section id="verbpraeposition" data-title="Verben mit Präposition" data-group="Sätze">
-<h2>Verben mit fester Präposition <span class="de">warten auf, denken an, sich freuen über</span></h2>
 
 <div class="card">
 <h3>Die wichtigsten Kombinationen</h3>
@@ -1363,11 +1417,9 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 </div>
 <p class="tip">Vor Vokal kommt ein <b class="hl">r</b> dazwischen: <span class="mono">da<b class="hl">r</b>auf, da<b class="hl">r</b>über, da<b class="hl">r</b>an, wo<b class="hl">r</b>auf</span> — aber <span class="mono">damit, davon, dafür, womit</span>.</p>
 </div>
-</section>
+</div>
+<div class="tbody" id="t-zeit" hidden>
 
-<!-- ============ ZAHLEN & ZEIT ============ -->
-<section id="zeit" data-title="Zahlen, Zeit &amp; Datum" data-group="Praxis">
-<h2>Zahlen, Zeit &amp; Datum <span class="de">am, im, um — die kleinen Wörter · the little words that decide everything</span></h2>
 
 <div class="card">
 <h3>Zeitangaben — welche Präposition?</h3>
@@ -1427,126 +1479,174 @@ footer{border-top:1px solid var(--line); margin-top:50px; padding-top:20px; colo
 <p class="tip"><strong>Datum vorlesen.</strong>
 <span class="en">Two things the written form hides. First, the dot after the number is an <b>ordinal marker</b> — it is the German equivalent of the “rd” in 3rd. So <em>3. Mai</em> is spoken <b>am dritten Mai</b>, never “am drei Mai”. Second, German dates run <b>day.month.year</b>: <em>3.5.2026</em> is <b>3 May</b>, not 3 March.</span></p>
 </div>
-</section>
+</div></div>
+<div class="pal-wrap" id="pal" hidden><div class="pal-bg"></div><div class="pal">
+  <input id="palq" placeholder="Suche in allen Tabellen … z.B. Dativ, wegen, halb drei" autocomplete="off">
+  <div class="pal-list" id="pallist"></div>
+  <div class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd> bewegen</span><span><kbd>↵</kbd> öffnen</span><span><kbd>esc</kbd> schließen</span><span style="margin-left:auto">sucht den ganzen Tabelleninhalt</span></div>
+</div></div>
+<script>const TOPICS=[{"id": "kasus", "title": "Die vier Fälle", "group": "Grundlagen", "sub": "Kasus — wer macht was mit wem?", "level": "A1", "icon": "⚖", "nde": "Deutsch zeigt die Rolle eines Nomens am Artikel, nicht an der Wortstellung.", "nen": "English uses word order to show who does what to whom. German changes the article instead — and that is all the four cases really are.", "tables": 1, "heads": ["Übersicht", "Verben mit Dativ", "Verben mit zwei Objekten"]}, {"id": "artikel", "title": "Artikel & ein-Wörter", "group": "Grundlagen", "sub": "der/die/das · ein/kein/mein", "level": "A1", "icon": "▦", "nde": "Der Artikel trägt Genus, Kasus und Numerus — das Nomen bleibt fast immer gleich.", "nen": "The article carries nearly all the grammatical information. Learn these tables and most of German declension follows from them.", "tables": 3, "heads": ["Bestimmter Artikel — der / die / das", "Unbestimmter Artikel & ein-Wörter — ein / kein / mein", "Possessivartikel — welches Wort zu welcher Person?", "der-Wörter"]}, {"id": "pronomen", "title": "Pronomen", "group": "Grundlagen", "sub": "ich/mich/mir · sich · der, die, das", "level": "A1", "icon": "☖", "nde": "Pronomen übernehmen den Kasus, den ihre Rolle im Satz verlangt.", "nen": "ich / mich / mir follows exactly the same pattern as der / den / dem. Learn one and you have learned both.", "tables": 3, "heads": ["Personalpronomen", "Reflexivpronomen", "Relativpronomen — der, die, das …"]}, {"id": "adjektive", "title": "Adjektivendungen", "group": "Grundlagen", "sub": "der schnelle Zug · ein schneller Zug · schneller Zug", "level": "A2", "icon": "◈", "nde": "Die Endung hängt davon ab, wie viel der Artikel schon verrät.", "nen": "If the article already shows case and gender, the adjective stays weak. If it does not, the adjective has to do that work instead.", "tables": 5, "heads": ["Die Grundfrage: Welche Tabelle?", "1 · Schwach", "2 · Gemischt", "3 · Stark", "Sonderfälle", "Komparativ & Superlativ"]}, {"id": "nomen", "title": "Nomen: Genus & Plural", "group": "Grundlagen", "sub": "Genus, Plural, N-Deklination", "level": "A1", "icon": "▣", "nde": "Genus und Plural sind öfter an der Endung erkennbar, als man denkt.", "nen": "Gender looks arbitrary but word endings give it away surprisingly often. Learn every noun with its article and plural from day one.", "tables": 3, "heads": ["Genus an der Endung erkennen", "Pluralformen — die fünf Muster", "N-Deklination"]}, {"id": "praepositionen", "title": "Präpositionen", "group": "Grundlagen", "sub": "welcher Kasus folgt?", "level": "A2", "icon": "↔", "nde": "Jede Präposition verlangt einen festen Kasus — außer den neun Wechselpräpositionen.", "nen": "Each preposition locks in a case. Nine of them switch: accusative for movement, dative for position.", "tables": 4, "heads": ["Immer Akkusativ", "Immer Dativ", "Wechselpräpositionen — Akkusativ oder Dativ", "Genitiv-Präpositionen", "Verschmelzungen", "Ort & Richtung — nach, zu, in"]}, {"id": "praesens", "title": "Präsens & Konjugation", "group": "Verben", "sub": "die Gegenwart konjugieren", "level": "A1", "icon": "▶", "nde": "Ein Satz Endungen, plus ein Vokalwechsel bei du und er/sie/es.", "nen": "Regular endings cover almost everything. The only real surprise is the vowel change in the du and er forms.", "tables": 3, "heads": ["Regelmäßige Endungen", "Die drei wichtigsten Verben", "Vokalwechsel", "Präsens für die Zukunft"]}, {"id": "modalverben", "title": "Modalverben", "group": "Verben", "sub": "können, müssen, wollen …", "level": "A1", "icon": "◆", "nde": "Modalverb auf Position 2, Infinitiv ganz ans Ende.", "nen": "Modal verbs bracket the sentence: the modal comes second, the main verb waits at the very end.", "tables": 3, "heads": ["Präsens", "Bedeutung", "Satzbau & Zeitformen"]}, {"id": "trennbar", "title": "Trennbare Verben", "group": "Verben", "sub": "aufstehen → ich stehe auf", "level": "A2", "icon": "⇄", "nde": "Im Hauptsatz löst sich das Präfix und wandert ans Satzende.", "nen": "The prefix detaches in a main clause and lands at the end. Stress tells you which verbs do it: AUFstehen splits, beZAHLen does not.", "tables": 1, "heads": ["Trennbar — Präfix wandert ans Satzende", "Untrennbar — bleibt immer am Verb"]}, {"id": "vergangenheit", "title": "Vergangenheit", "group": "Verben", "sub": "Perfekt · Präteritum · Plusquamperfekt", "level": "A2", "icon": "⏱", "nde": "Perfekt zum Sprechen, Präteritum zum Schreiben.", "nen": "Use the Perfekt when speaking and the Präteritum when writing — except for sein, haben, werden and the modals, which take the Präteritum always.", "tables": 4, "heads": ["Welche Zeitform wann?", "Perfekt = haben/sein + Partizip II", "Präteritum", "Plusquamperfekt & Futur"]}, {"id": "unregelmaessig", "title": "Unregelmäßige Verben", "group": "Verben", "sub": "die Liste, die man wirklich braucht", "level": "A2", "icon": "≡", "nde": "Rund 50 Verben muss man wirklich auswendig können.", "nen": "There is no rule here, but there are patterns. Learn them in groups by vowel change rather than one by one.", "tables": 1, "heads": ["Die 50 häufigsten"]}, {"id": "imperativ", "title": "Imperativ", "group": "Verben", "sub": "Komm! Kommt! Kommen Sie!", "level": "A1", "icon": "!", "nde": "Vier Formen: du, ihr, Sie und wir.", "nen": "Drop the -st for du, keep the present form for ihr, add Sie to be polite. The one trap is that a-umlauts disappear.", "tables": 1, "heads": ["Die vier Formen"]}, {"id": "konjunktiv", "title": "Konjunktiv II", "group": "Verben", "sub": "wäre, hätte, würde — höflich &amp; hypothetisch", "level": "B1", "icon": "◇", "nde": "Höflichkeit und Hypothesen — meist mit würde, manchmal mit echter Form.", "nen": "This is how you are polite and how you talk about things that are not real. A handful of verbs have proper forms; everything else uses würde.", "tables": 2, "heads": ["Wofür man ihn braucht", "Die echten Formen", "Vergangenheit & irreale Sätze", "Konjunktiv I"]}, {"id": "passiv", "title": "Passiv", "group": "Verben", "sub": "werden + Partizip II", "level": "B1", "icon": "⊙", "nde": "werden + Partizip II — die Handlung zählt, nicht der Täter.", "nen": "Use the passive when what happened matters more than who did it. The one thing to memorise is worden, not geworden.", "tables": 1, "heads": ["Alle Zeitformen", "Aktiv → Passiv & der Handelnde"]}, {"id": "satzbau", "title": "Satzbau & Wortstellung", "group": "Sätze", "sub": "wo steht das Verb?", "level": "A2", "icon": "⊞", "nde": "Das Verb steht auf Position 2 — im Nebensatz ganz am Ende.", "nen": "Almost all of German word order falls out of a single rule about where the verb sits.", "tables": 2, "heads": ["Die drei Grundregeln", "Die Verbklammer", "Reihenfolge im Mittelfeld"]}, {"id": "tekamolo", "title": "TeKaMoLo", "group": "Sätze", "sub": "die Reihenfolge der Angaben · what goes where in the middle of a sentence", "level": "B1", "icon": "◧", "nde": "Zeit, Grund, Art, Ort — in genau dieser Reihenfolge.", "nen": "When several adverbials meet in the middle of a sentence, this is the order they take. English runs nearly backwards, which is why it feels strange.", "tables": 2, "heads": ["Was die vier Silben bedeuten", "Warum es sich falsch anfühlt", "Zehn Sätze, Stück für Stück", "Die Einschränkungen"]}, {"id": "konjunktionen", "title": "Konjunktionen", "group": "Sätze", "sub": "Sätze verbinden — und was mit dem Verb passiert", "level": "B1", "icon": "⋔", "nde": "Die Konjunktion bestimmt, wohin das Verb geht.", "nen": "Three kinds, three effects on the verb: leave it alone, send it to the end, or put it straight after.", "tables": 3, "heads": ["1 · Nebenordnend — Wortstellung bleibt gleich", "2 · Unterordnend — Verb ans Ende", "3 · Verbindungsadverbien — Verb direkt danach", "4 · Zweiteilige Konnektoren"]}, {"id": "verbpraeposition", "title": "Verben mit Präposition", "group": "Sätze", "sub": "warten auf, denken an, sich freuen über", "level": "B1", "icon": "⚭", "nde": "Verb und Präposition gehören zusammen — als Einheit lernen.", "nen": "These pairings are not derivable from logic. Learn warten auf as if it were one word, with its case attached.", "tables": 2, "heads": ["Die wichtigsten Kombinationen", "da- und wo-Verbindungen"]}, {"id": "zeit", "title": "Zahlen, Zeit & Datum", "group": "Praxis", "sub": "am, im, um — die kleinen Wörter · the little words that decide everything", "level": "A1", "icon": "◷", "nde": "am, im, um — die kleinen Wörter, die man jeden Tag braucht.", "nen": "Time expressions, telling the clock, numbers and dates: the everyday machinery of saying when something happens.", "tables": 2, "heads": ["Zeitangaben — welche Präposition?", "Uhrzeit", "Zahlen & Ordnungszahlen"]}];
+const app=document.getElementById('app'), store=document.querySelector('.hidden-store');
+const GROUPS=[['Grundlagen','Fälle, Artikel, Endungen','var(--accent)'],['Verben','Formen und Zeiten','var(--blue)'],
+  ['Sätze','Wortstellung und Verbindungen','var(--green)'],['Praxis','Zahlen, Zeit, Datum','var(--gold)']];
+const byId=Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-<div class="nores" id="nores">Keine Treffer. Versuch ein anderes Stichwort — z.&nbsp;B. „Dativ“, „Perfekt“, „Adjektiv“.</div>
+/* ---------- full-text index: every card of every topic ---------- */
+const IDX=[];
+for(const t of TOPICS){
+  const body=document.getElementById('t-'+t.id);
+  [...body.querySelectorAll('.card')].forEach((c,i)=>{
+    const h=c.querySelector('h3');
+    IDX.push({tid:t.id,ti:t.title,icon:t.icon,i,
+      title:h?h.textContent.trim():t.title,
+      text:c.textContent.replace(/\s+/g,' ').trim()});
+  });
+}
 
-<footer>
-<p><strong>Deutsche Grammatik — Referenz.</strong> Zusammengestellt als Lernhilfe für die Niveaus A1–B2. Keine erschöpfende Grammatik, sondern das, was man täglich nachschlägt.</p>
-<p>Fehler gefunden oder etwas vermisst? Ergänze einfach die <span class="mono">index.html</span> — die Seite ist eine einzige Datei ohne Build-Schritt.</p>
-</footer>
-</main>
-</div>
+/* ---------- theme ---------- */
+const root=document.documentElement;
+try{const s=localStorage.getItem('dg-theme'); if(s)root.setAttribute('data-theme',s)}catch(e){}
+document.getElementById('theme').onclick=()=>{
+  const dark=root.getAttribute('data-theme')==='dark'||(!root.hasAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);
+  const n=dark?'light':'dark'; root.setAttribute('data-theme',n);
+  try{localStorage.setItem('dg-theme',n)}catch(e){}};
 
-<script>
-(function(){
-  // ---- Navigation aus den Sections aufbauen ----
-  var sections = Array.prototype.slice.call(document.querySelectorAll('main section'));
-  var nav = document.getElementById('nav');
-  var lastGroup = null;
-  var links = {};
-  sections.forEach(function(s){
-    var group = s.dataset.group || '';
-    if (group !== lastGroup){
-      var g = document.createElement('div');
-      g.className = 'group';
-      g.textContent = group;
-      nav.appendChild(g);
-      lastGroup = group;
+/* ---------- home: dense directory ---------- */
+function home(){
+  let h=`<div class="lede"><h1>Deutsche Grammatik</h1>
+    <p>Nachschlagewerk — jede Tabelle in einem Klick. <span class="en">A lookup reference. Press <kbd>/</kbd> to search every table, or pick a table below.</span></p></div>`;
+  for(const [g,sub,ac] of GROUPS){
+    const list=TOPICS.filter(t=>t.group===g); if(!list.length)continue;
+    h+=`<div class="grouphead"><h2>${g}</h2><span class="ct">${sub}</span><div class="ln"></div></div><div class="dirgrid">`;
+    h+=list.map(t=>`<div class="tblock" style="--ac:${ac}">
+      <button class="th" data-go="${t.id}"><h3>${esc(t.title)}</h3></button>
+      <ul class="tlinks">${t.heads.map((x,i)=>`<li><button data-go="${t.id}" data-card="${i}">${esc(x)}</button></li>`).join('')}</ul>
+    </div>`).join('')+'</div>';
+  }
+  h+=`<footer style="margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px">
+    <p style="margin:0 0 6px"><strong>${IDX.length} Tabellen und Übersichten</strong> in ${TOPICS.length} Themen, Niveau A1–B2.
+    Zusammengestellt als Nachschlagewerk — keine vollständige Grammatik.</p>
+    <p style="margin:0">Alles steht in einer einzigen <span class="mono">index.html</span>, ohne Build-Schritt und ohne externe Abhängigkeiten.</p></footer>`;
+  app.innerHTML=h;
+}
+
+/* ---------- topic ---------- */
+function topic(id,card){
+  const t=byId[id], i=TOPICS.indexOf(t), prev=TOPICS[i-1], next=TOPICS[i+1];
+  app.innerHTML=`<div class="crumb"><button data-go="">Übersicht</button> › <span>${t.group}</span> › <span style="color:var(--ink)">${esc(t.title)}</span></div>
+  <div class="cols"><div class="colmain">
+    <div class="thead"><h1>${esc(t.title)}</h1><span class="en">${t.sub}</span></div>
+    <div id="slot"></div>
+    <div class="pager">
+      ${prev?`<button class="pg" data-go="${prev.id}"><small>← ${prev.group}</small><b>${esc(prev.title)}</b></button>`:''}
+      ${next?`<button class="pg nx" data-go="${next.id}"><small>${next.group} →</small><b>${esc(next.title)}</b></button>`:''}
+    </div></div>
+    <aside class="onthis"><b>Tabellen</b>${t.heads.map((h,n)=>`<button data-n="${n}"${n?'':' class="on"'}>${esc(h)}</button>`).join('')}</aside>
+  </div>`;
+  const body=document.getElementById('t-'+id).cloneNode(true);
+  body.hidden=false; body.removeAttribute('id');
+  document.getElementById('slot').appendChild(body);
+  const cards=[...body.querySelectorAll('.card')];
+  cards.forEach((c,n)=>c.id='c-'+n);
+  app.querySelectorAll('.onthis button').forEach(b=>b.onclick=()=>{
+    const c=cards[+b.dataset.n]; if(c)c.scrollIntoView({behavior:'smooth',block:'start'});});
+  if('IntersectionObserver' in window){
+    const links=[...app.querySelectorAll('.onthis button')];
+    const io=new IntersectionObserver(en=>{const v=en.filter(e=>e.isIntersecting);
+      if(!v.length)return; v.sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+      const n=+v[0].target.id.slice(2); links.forEach((l,k)=>l.classList.toggle('on',k===n));},
+      {rootMargin:'-80px 0px -62% 0px'});
+    cards.forEach(c=>io.observe(c));
+  }
+  if(card!=null&&cards[card]){
+    const c=cards[card];
+    requestAnimationFrame(()=>{c.scrollIntoView({block:'start'});scrollBy(0,-66);c.classList.add('flash')});
+  }
+}
+
+/* ---------- all tables: one page, Ctrl+F works ---------- */
+function all(){
+  let h=`<div class="allnote">🔎 <div>Alle ${TOPICS.length} Themen auf einer Seite — für <b>Strg/⌘ + F</b> und zum Ausdrucken.
+    <span class="en">Everything at once, so browser find and printing work across the whole reference.</span></div></div>`;
+  app.innerHTML=h;
+  for(const t of TOPICS){
+    const sec=document.createElement('div'); sec.className='allsec';
+    sec.innerHTML=`<h2>${esc(t.title)} <span class="en" style="display:inline;font-size:13px">${t.sub}</span></h2>`;
+    const body=document.getElementById('t-'+t.id).cloneNode(true);
+    body.hidden=false; body.removeAttribute('id');
+    sec.appendChild(body); app.appendChild(sec);
+  }
+}
+
+/* ---------- router ---------- */
+function render(){
+  // links from the old one-page version used #kasus; keep them working
+  const legacy=location.hash.match(/^#([A-Za-z]+)$/);
+  if(legacy&&byId[legacy[1]]){location.replace('#/'+legacy[1]);return}
+  const m=location.hash.match(/^#\/([^/]+)(?:\/(\d+))?$/);
+  const run=()=>{
+    if(!m) home();
+    else if(m[1]==='alle') all();
+    else if(byId[m[1]]) topic(m[1], m[2]!=null?+m[2]:null);
+    else home();
+    document.getElementById('allBtn').classList.toggle('on', m&&m[1]==='alle');
+    if(!(m&&m[2]!=null)) scrollTo(0,0);
+  };
+  document.startViewTransition&&!matchMedia('(prefers-reduced-motion:reduce)').matches
+    ? document.startViewTransition(run) : run();
+}
+function go(h){ if(location.hash===h){render();return} location.hash=h; }
+addEventListener('hashchange',render);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(!b)return;
+  const id=b.dataset.go, c=b.dataset.card;
+  go(id?('#/'+id+(c!=null?'/'+c:'')):'#/');});
+document.getElementById('allBtn').onclick=()=>go('#/alle');
+document.getElementById('homeBtn').onclick=()=>go('#/');
+
+/* ---------- palette: searches every table row ---------- */
+const pal=document.getElementById('pal'), palq=document.getElementById('palq'), pallist=document.getElementById('pallist');
+let sel=0, rows=[];
+function snippet(text,q){
+  const i=text.toLowerCase().indexOf(q); if(i<0)return esc(text.slice(0,90));
+  const s=Math.max(0,i-28);
+  return (s?'…':'')+esc(text.slice(s,i))+'<mark>'+esc(text.substr(i,q.length))+'</mark>'+esc(text.slice(i+q.length,i+q.length+56))+'…';
+}
+function draw(){
+  const q=palq.value.trim().toLowerCase();
+  if(!q){ rows=TOPICS.map(t=>({tid:t.id,ti:t.title,icon:t.icon,i:null,title:t.title,sub:t.group+' · '+t.tables+' Tabellen'})); }
+  else{
+    rows=[];
+    for(const r of IDX){
+      const inTitle=(r.title+' '+r.ti).toLowerCase().includes(q);
+      const inText=r.text.toLowerCase().includes(q);
+      if(inTitle||inText) rows.push({...r,score:inTitle?0:1,sub:inText?snippet(r.text,q):esc(r.ti)});
     }
-    var a = document.createElement('a');
-    a.href = '#' + s.id;
-    a.innerHTML = s.dataset.title;
-    nav.appendChild(a);
-    links[s.id] = a;
-  });
-
-  // ---- Aktiven Link markieren ----
-  var current = null;
-  function setActive(id){
-    if (id === current || !links[id]) return;
-    if (current && links[current]) links[current].classList.remove('active');
-    links[id].classList.add('active');
-    current = id;
+    rows.sort((a,b)=>a.score-b.score);
   }
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      var visible = entries.filter(function(e){ return e.isIntersecting; });
-      if (visible.length){
-        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
-        setActive(visible[0].target.id);
-      }
-    }, { rootMargin: '-80px 0px -65% 0px' });
-    sections.forEach(function(s){ io.observe(s); });
-  }
-
-  // ---- Suche ----
-  var q = document.getElementById('q');
-  var nores = document.getElementById('nores');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('main .card'));
-  cards.forEach(function(c){ c._text = c.textContent.toLowerCase(); });
-  sections.forEach(function(s){ s._text = (s.dataset.title + ' ' + s.textContent).toLowerCase(); });
-
-  function runSearch(){
-    var term = q.value.trim().toLowerCase();
-    document.body.classList.toggle('searching', !!term);
-    if (!term){
-      cards.forEach(function(c){ c.hidden = false; });
-      sections.forEach(function(s){ s.hidden = false; });
-      nores.style.display = 'none';
-      return;
-    }
-    var hits = 0;
-    sections.forEach(function(s){
-      var sectionMatch = s.dataset.title.toLowerCase().indexOf(term) > -1;
-      var shown = 0;
-      s.querySelectorAll('.card').forEach(function(c){
-        var match = sectionMatch || c._text.indexOf(term) > -1;
-        c.hidden = !match;
-        if (match) shown++;
-      });
-      s.hidden = shown === 0;
-      hits += shown;
-    });
-    nores.style.display = hits ? 'none' : 'block';
-  }
-  q.addEventListener('input', runSearch);
-  q.addEventListener('keydown', function(e){
-    if (e.key === 'Escape'){ q.value = ''; runSearch(); q.blur(); }
-  });
-  document.addEventListener('keydown', function(e){
-    var t = e.target.tagName;
-    if (e.key === '/' && t !== 'INPUT' && t !== 'TEXTAREA'){
-      e.preventDefault(); q.focus(); q.select();
-    }
-  });
-
-  // ---- Theme ----
-  var root = document.documentElement;
-  try {
-    var saved = localStorage.getItem('dg-theme');
-    if (saved) root.setAttribute('data-theme', saved);
-  } catch(err){}
-  function toggleTheme(){
-    var isDark = root.getAttribute('data-theme') === 'dark' ||
-      (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    var next = isDark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('dg-theme', next); } catch(err){}
-  }
-  ['themeBtn','themeBtn2'].forEach(function(id){
-    var b = document.getElementById(id);
-    if (b) b.addEventListener('click', toggleTheme);
-  });
-
-  // ---- Mobile-Navigation ----
-  var menuBtn = document.getElementById('menuBtn');
-  var scrim = document.getElementById('scrim');
-  function closeNav(){ document.body.classList.remove('nav-open'); }
-  if (menuBtn) menuBtn.addEventListener('click', function(){ document.body.classList.toggle('nav-open'); });
-  if (scrim) scrim.addEventListener('click', closeNav);
-  nav.addEventListener('click', function(e){ if (e.target.tagName === 'A') closeNav(); });
-})();
-</script>
-</body>
-</html>
+  rows=rows.slice(0,50); sel=0;
+  pallist.innerHTML=rows.length?rows.map((r,i)=>`<div class="row${i?'':' sel'}" data-i="${i}">
+    <div class="ic">${r.icon}</div><div class="tx"><b>${esc(r.title)}${r.i!=null?` <span style="color:var(--muted);font-weight:400">· ${esc(r.ti)}</span>`:''}</b>
+    <span>${r.sub}</span></div></div>`).join('')
+    :'<div class="pal-empty">Keine Treffer · no matches</div>';
+}
+function openPal(){pal.hidden=false;palq.value='';draw();palq.focus()}
+function closePal(){pal.hidden=true}
+function pick(r){ go('#/'+r.tid+(r.i!=null?'/'+r.i:'')); closePal(); }
+document.getElementById('openK').onclick=openPal;
+pal.querySelector('.pal-bg').onclick=closePal;
+palq.oninput=draw;
+pallist.onclick=e=>{const r=e.target.closest('.row'); if(r)pick(rows[+r.dataset.i])};
+addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?openPal():closePal();return}
+  if(e.key==='/'&&pal.hidden&&!/INPUT|TEXTAREA/.test(e.target.tagName)){e.preventDefault();openPal();return}
+  if(pal.hidden)return;
+  if(e.key==='Escape')closePal();
+  else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault(); if(!rows.length)return;
+    sel=(sel+(e.key==='ArrowDown'?1:-1)+rows.length)%rows.length;
+    [...pallist.children].forEach((c,i)=>c.classList.toggle('sel',i===sel));
+    pallist.children[sel].scrollIntoView({block:'nearest'});}
+  else if(e.key==='Enter'&&rows[sel])pick(rows[sel]);
+});
+render();
+</script></body></html>
