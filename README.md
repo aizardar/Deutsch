@@ -29,16 +29,21 @@ sections are still German-only.
 
 ## Features
 
-- **Front page is the index** — all 62 tables listed by name under their topic,
-  each a direct link
+- **Two panes** — every topic heading stays in the left nav; clicking one swaps
+  the content on the right. The panes scroll independently, so the nav stays
+  put while you read a long table.
+- **The open topic expands** to list its own tables as sub-links, and that list
+  tracks your scroll position
 - **Search reads table contents**, not just headings — press `/` or `⌘K`, type
   `halb drei` or `wegen`, and land on the exact table with the match highlighted
 - **Deep links to a single table** — `#/adjektive/2` opens the mixed-declension
   table and flashes it
-- **Alle Tabellen** — one button renders everything on a single page, so
-  `Ctrl/⌘ + F` and printing work across the whole reference
+- **Alle Tabellen** — renders everything on one page, so `Ctrl/⌘ + F` and
+  printing work across the whole reference
+- **English under every rule** — 289 glosses, in muted italics beneath the German
 - **Dark mode** — follows your system setting, toggle to override (remembered)
-- **Mobile** — tables scroll horizontally inside their own container
+- **Mobile** — the left pane becomes a drawer; tables scroll inside their own
+  container
 
 ## Viewing it locally
 
@@ -69,10 +74,14 @@ The `.nojekyll` file tells Pages to serve the HTML as-is without Jekyll processi
 
 `index.html` holds three things: the styles, the content, and a small router.
 
+The page is a two-pane app shell: `<aside class="side">` holds the nav, which is
+generated from `TOPICS` at load, and `<div class="content">` is the pane the
+router writes into. Both scroll independently — `body` itself does not scroll.
+
 All topic content sits in `<div class="hidden-store">` as one `<div class="tbody"
-id="t-…">` per topic. The router clones the requested one into the page. The
-topic list — titles, groups, subtitles, table names — is the `TOPICS` array in
-the script, and the search index is built from the DOM at load.
+id="t-…">` per topic. The router clones the requested one into the content pane.
+The topic list — titles, groups, subtitles, table names — is the `TOPICS` array
+in the script, and the search index is built from the DOM at load.
 
 To **add a table** to an existing topic, drop another `<div class="card">` into
 that topic's `tbody`, then add its `<h3>` text to the matching `heads` array in
@@ -103,6 +112,8 @@ Two gotchas worth knowing:
   deliberately not used.
 - Links from the old one-page version (`#kasus`) redirect to the new form
   (`#/kasus`).
+- Because the content pane scrolls rather than the window, anything that needs
+  to scroll the page must set `content.scrollTop`, not `window.scrollTo`.
 
 ## Note
 
